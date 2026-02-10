@@ -1,14 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
+import LenisProvider from "@/components/Animations/LenisProvider";
+import Footer from "@/components/Footer";
+import BackgroundElements from "@/components/Animations/BackgroundElements";
+import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+
+const manrope = Manrope({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
 });
 
 export const metadata = {
@@ -20,9 +22,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={` ${manrope.variable} antialiased`}
       >
+
+        <BackgroundElements/>
+        <LenisProvider>
+          <Navbar/>
         {children}
+        <Footer/>
+        </LenisProvider>
       </body>
     </html>
   );
