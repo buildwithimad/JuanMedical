@@ -119,14 +119,7 @@ const AboutSection = () => {
                       {item.year}
                     </span>
                     
-                    {/* Minimal Creative Icon */}
-                    <div className={`w-14 h-14 rounded-full border flex items-center justify-center transition-transform duration-500 group-hover:rotate-45 ${
-                      item.year === "Today" ? "border-white/20 text-white" : "border-[#22347a]/10 text-[#22347a]"
-                    }`}>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                        <path d="M7 17L17 7M17 7H10M17 7V14" />
-                      </svg>
-                    </div>
+                   
                   </div>
 
                   <div className="max-w-md">

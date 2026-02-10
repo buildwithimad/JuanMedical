@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import ScrollBasedAnimation from "../Animations/ScrollBasedAnimations";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
@@ -39,10 +40,54 @@ const formContent = {
 };
 
 export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    service: "",
+    message: ""
+  });
   const pathname = usePathname();
   const lang = pathname?.startsWith("/ar") ? "ar" : "en";
   const t = formContent[lang];
   const isRTL = lang === "ar";
+
+
+ const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+
+  const data = await res.json();
+
+  if (data.success) {
+    alert("Message sent successfully!");
+    setFormData({
+      name: "",
+      phone: "",
+      service: "",
+      message: "",
+    });
+  } else {
+    alert("Something went wrong.");
+  }
+};
+
+
+
 
   return (
     <section className="py-12 relative bg-white" dir={isRTL ? "rtl" : "ltr"}>
@@ -95,33 +140,41 @@ export default function ContactForm() {
                   {t.form.title}
                 </h2>
 
-                <form className="flex flex-col gap-8">
+                <form
+                  onSubmit={handleSubmit}
+                 className="flex flex-col gap-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-3">
                       <label className="text-xs font-black uppercase tracking-widest text-black/30 pl-4">{t.form.name}</label>
-                      <input type="text" className="w-full h-16 px-8 rounded-2xl bg-[#F8F9FB] border border-black/5 focus:border-[#22347a] outline-none transition-all font-bold text-lg text-black placeholder:text-black/10" placeholder="..." />
+                      <input 
+                      type="text" name="name" value={formData.name} onChange={handleChange} className="w-full h-16 px-8 rounded-2xl bg-[#F8F9FB] border border-black/5 focus:border-[#22347a] outline-none transition-all font-bold text-lg text-black placeholder:text-black/10" placeholder="..." />
                     </div>
                     <div className="space-y-3">
                       <label className="text-xs font-black uppercase tracking-widest text-black/30 pl-4">{t.form.phone}</label>
-                      <input type="tel" className="w-full h-16 px-8 rounded-2xl bg-[#F8F9FB] border border-black/5 focus:border-[#22347a] outline-none transition-all font-bold text-lg text-black placeholder:text-black/10" placeholder="..." />
+                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full h-16 px-8 rounded-2xl bg-[#F8F9FB] border border-black/5 focus:border-[#22347a] outline-none transition-all font-bold text-lg text-black placeholder:text-black/10" placeholder="..." />
                     </div>
                   </div>
 
                   <div className="space-y-3">
                     <label className="text-xs font-black uppercase tracking-widest text-black/30 pl-4">{t.form.service}</label>
-                    <select className="w-full h-16 px-8 rounded-2xl bg-[#F8F9FB] border border-black/5 focus:border-[#22347a] outline-none transition-all font-bold text-lg text-black/60 cursor-pointer appearance-none">
-                      <option>Elderly Care</option>
-                      <option>Childcare</option>
-                      <option>Home Nursing</option>
+                    <select 
+                    name="service" value={formData.service} onChange={handleChange}
+                    className="w-full h-16 px-8 rounded-2xl bg-[#F8F9FB] border border-black/5 focus:border-[#22347a] outline-none transition-all font-bold text-lg text-black/60 cursor-pointer appearance-none">
+                      <option value="">Select a service</option>
+                      <option value="Elderly Care">Elderly Care</option>
+                      <option value="Childcare">Childcare</option>
+                      <option value="Home Nursing">Home Nursing</option>
                     </select>
                   </div>
 
                   <div className="space-y-3">
                     <label className="text-xs font-black uppercase tracking-widest text-black/30 pl-4">{t.form.message}</label>
-                    <textarea rows="4" className="w-full p-8 rounded-3xl bg-[#F8F9FB] border border-black/5 focus:border-[#22347a] outline-none transition-all font-bold text-lg text-black placeholder:text-black/10 resize-none" placeholder="..." />
+                    <textarea rows="4" name="message" value={formData.message} onChange={handleChange}   className="w-full p-8 rounded-3xl bg-[#F8F9FB] border border-black/5 focus:border-[#22347a] outline-none transition-all font-bold text-lg text-black placeholder:text-black/10 resize-none" placeholder="..." />
                   </div>
 
-                  <button className="group w-full h-20 mt-4 rounded-full bg-black text-white font-black text-xl uppercase tracking-widest overflow-hidden relative flex items-center justify-center gap-4 hover:gap-6 transition-all duration-500">
+                  <button 
+                  type="submit"
+                  className="group w-full h-20 mt-4 rounded-full bg-black text-white font-black text-xl uppercase tracking-widest overflow-hidden relative flex items-center justify-center gap-4 hover:gap-6 transition-all duration-500">
                      <span className="relative z-10">{t.form.btn}</span>
                      <Send className="w-5 h-5 relative z-10 group-hover:rotate-45 transition-transform duration-500" />
                      <div className="absolute inset-0 bg-gradient-to-r from-[#22347a] to-[#3b7335] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

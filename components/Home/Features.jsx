@@ -84,14 +84,7 @@ export default function WhyChoose() {
                         </p>
                       </div>
 
-                      {/* Minimal Rounded Icon Reveal */}
-                      <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0">
-                        <div className={`w-14 h-14 rounded-full border flex items-center justify-center ${isGradientCard ? "border-white/20" : "border-black/5"}`}>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ color: item.accent }}>
-                            <path d="M7 17L17 7M17 7H10M17 7V14" />
-                          </svg>
-                        </div>
-                      </div>
+                   
 
                     </div>
                   </div>

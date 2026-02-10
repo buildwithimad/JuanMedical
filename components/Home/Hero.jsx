@@ -51,7 +51,7 @@ export default function Hero() {
     >
       
       {/* 1. TOP NAVIGATION / STATUS BAR */}
-      <div className="w-full flex justify-between items-start p-8 lg:p-12 z-20">
+      <div className="w-full flex justify-between items-start mt-8 lg:mt-12 p-8 lg:p-12 z-20">
         {/* Placeholder for top nav elements if needed later */}
       </div>
 
