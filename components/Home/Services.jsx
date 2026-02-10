@@ -46,7 +46,7 @@ const ServiceCard = ({ data, index }) => (
   <div className="relative group overflow-hidden rounded-[3rem] bg-[#F8F9FB] aspect-square flex flex-col justify-end p-8 lg:p-12 transition-all duration-700 hover:bg-white hover:scale-[0.98]">
     
     {/* BACKGROUND IMAGE LAYER - Adjusted Opacity here */}
-    <div className="absolute inset-0 z-0 opacity-60 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-50 group-hover:blur-sm group-hover:grayscale-0">
+    <div className="absolute inset-0 z-0 opacity-70 transition-all duration-1000 group-hover:scale-110 group-hover:opacity-50 group-hover:blur-sm group-hover:grayscale-0">
       <Image
         src={data.image}
         alt={data.title}

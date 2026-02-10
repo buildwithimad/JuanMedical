@@ -34,7 +34,7 @@ export default function AboutHero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           
           {/* 1. LEFT SIDE: MASSIVE TYPOGRAPHY */}
-          <div className="lg:col-span-7 flex flex-col items-start z-10">
+          <div className="lg:col-span-6 flex flex-col items-start z-10">
             <ScrollBasedAnimation direction="up" delay={0.1}>
               
               {/* Badge - Pill Style */}
@@ -70,16 +70,16 @@ export default function AboutHero() {
           </div>
 
           {/* 2. RIGHT SIDE: SHAPED IMAGE CONTAINER */}
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-6 relative">
              <ScrollBasedAnimation direction="up" delay={0.3}>
-                <div className="relative w-full aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-900/5 bg-[#F8F9FB]">
+                <div className="relative w-full aspect-[5/5] rounded-[3rem] overflow-hidden">
                     
                     {/* Image Layer */}
                     <Image
-                        src="/About/AboutHero.png"
+                        src="/About/AboutHero1.png"
                         alt="Juan Medical Team"
                         fill
-                        className="object-cover scale-105 hover:scale-100 transition-transform duration-1000 grayscale hover:grayscale-0"
+                        className="object-cover scale-105 hover:scale-100 transition-transform duration-1000"
                         priority
                     />
 
