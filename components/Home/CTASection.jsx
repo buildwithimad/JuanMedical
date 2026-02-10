@@ -44,7 +44,7 @@ export default function CTA() {
             </p>
 
             {/* 4. Smooth Rounded Button - No Shadows, Clean Gradient Hover */}
-            <Link href="/contact" className="w-full lg:w-auto">
+            <Link href={lang === "ar" ? "/ar/contact" : "/en/contact"} className="w-full lg:w-auto">
               <button className="group relative inline-flex items-center justify-center gap-8 w-full lg:w-auto border-2 border-[#22347a] px-10 py-6 rounded-full overflow-hidden transition-all duration-500 hover:border-transparent hover:scale-105">
                 
                 {/* Text stays sharp */}

@@ -35,12 +35,7 @@ export default function ContactHero() {
           {/* TEXT SIDE */}
           <div className="lg:col-span-7 z-10">
             <ScrollBasedAnimation direction="up" delay={0.1}>
-              <div className="inline-flex items-center gap-3 py-2 px-5 rounded-full bg-[#F8F9FB] border border-[#22347a]/5 mb-10">
-                <div className="w-6 h-6 rounded-full bg-white border border-black/5 flex items-center justify-center text-[#3b7335]">
-                    <Sparkles className="w-3 h-3" />
-                </div>
-                <span className="text-xs font-black tracking-[0.3em] uppercase text-[#22347a]">{t.badge}</span>
-              </div>
+             
               
               <h1 className="text-[15vw] lg:text-[11vw] font-black tracking-tighter mb-8 leading-[0.8] uppercase text-black">
                 {t.titleStart}<br />
