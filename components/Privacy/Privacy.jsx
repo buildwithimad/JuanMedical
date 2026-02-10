@@ -170,10 +170,7 @@ export default function PrivacyPage() {
                      <h3 className="text-sm font-black uppercase tracking-widest text-black/30 mb-4">Status</h3>
                      <p className="text-xl font-bold text-[#22347a] mb-8">{t.meta.lastUpdated}</p>
                      
-                     <button className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-black hover:text-[#3b7335] transition-colors">
-                        <Download className="w-4 h-4" />
-                        {t.meta.download}
-                     </button>
+                     
                   </div>
                   
                   <div className="mt-8">
