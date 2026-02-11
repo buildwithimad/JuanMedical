@@ -17,7 +17,7 @@ const servicesData = {
       title: "Childcare", 
       description: "Qualified caregivers for a safe environment.", 
       accent: "#3b7335",
-      image: "/ChildCare.png"
+      image: "/Childcare.png"
     },
     nursing: { 
       title: "Home Nursing", 
